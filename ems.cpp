@@ -37,7 +37,8 @@ class Performance{
 			cout<<"Please enter the goal description.\n";
 			getline(cin,temp);
 			goal[goal_cnt].goal_desc=temp;
-			goal[goal_cnt].progress=0;	
+			goal[goal_cnt].progress=0;
+			goal_cnt++;	
 		}
 		void deleteGoal();
 		void printGoal()
@@ -71,6 +72,7 @@ class Performance{
 				return ;
 			}
 			
+			goal[index].progress=newscore;
 			cout<<"New score update sucessful.\n";
 			
 		}
@@ -100,6 +102,13 @@ class employee{
 					<< info.salary << "\t" 
 					<< info.cv << endl;
         }
+        
+        void createGoal() { perform.createGoal();
+		}
+		void updateGoal(){ perform.updateProgress();
+		}
+		void printGoal() { perform.printGoal();
+		}
 };
 
 class stack
@@ -193,6 +202,8 @@ int main()
     {
         emp[i].getinfo();
     }
+    
+   
     
     infile.close();
     return 0;
