@@ -110,6 +110,7 @@ int main()
     fstream infile("employee.txt",ios::in);
     employee emp[10];
     stack emply;
+    emply.createStack();
 
     details *temp;
     if (!infile)
@@ -133,10 +134,6 @@ int main()
         i++;
     }
 	
-    for(int i=0;i<10; i++)
-    {
-        emply.createStack();
-    }
 
     for(int i=0; i<10; i++)
     {
