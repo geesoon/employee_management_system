@@ -8,6 +8,7 @@ struct Goal{
 	
 	string goal_desc;
 	float progress;
+	Goal * next;
 };
 
 class Performance{

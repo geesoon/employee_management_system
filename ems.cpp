@@ -4,6 +4,7 @@
 const int size = 100;
 
 #include "performance.h"
+#include "GoalList.h"
 #include "payroll.h"
 #include "employee.h"
 
