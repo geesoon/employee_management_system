@@ -3,17 +3,10 @@
 
 using namespace std;
 
-
-struct Goal{
-	
-	string goal_desc;
-	float progress;
-	Goal * next;
-};
-
 class Performance{
 	private:
 		Goal goal[size];
+		List goallist;
 		int goal_cnt;
 	public:
 		Performance() {goal_cnt = 0;}
@@ -27,24 +20,18 @@ class Performance{
 
 void Performance::createGoal()
 {
-	string temp;
+	string str;
 	cout<<"Please enter the goal description.\n";
-	getline(cin,temp);
-	goal[goal_cnt].goal_desc=temp;
-	goal[goal_cnt].progress=0;
+	getline(cin,str);
+	
+	goallist.createNode(str);
+	
 	goal_cnt++;	
 }
 
 void Performance::printGoal()
-{
-	float tot=0;
-	for(int i=0;i<goal_cnt;i++)
-	{
-		cout<<goal[i].goal_desc<<" \t\t "<<goal[i].progress<<endl;
-		tot+=goal[i].progress;
-	}
-			
-	cout<<"Overall progess score = "<< (tot/goal_cnt)<<endl;
+{	
+	goallist.display(goal_cnt);
 }
 
 void Performance::updateProgress()
@@ -58,6 +45,8 @@ void Performance::updateProgress()
 		cout<<"Error, index out of bound\n";
 		return;
 	}
+	
+	
 	
 	cout<<"Enter new progress score >> "; cin>>newscore;
 	

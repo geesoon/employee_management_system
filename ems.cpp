@@ -3,8 +3,8 @@
 #include<fstream>
 const int size = 100;
 
-#include "performance.h"
 #include "GoalList.h"
+#include "performance.h"
 #include "payroll.h"
 #include "employee.h"
 
@@ -102,6 +102,8 @@ int main()
         emp[i].getinfo();
     }
     
+    emp[0].createGoal();
+    emp[0].printGoal();
    
     
     infile.close();
