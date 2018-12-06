@@ -40,9 +40,11 @@ class employee{
         
         void createGoal() { perform.createGoal();
 		}
-		void updateGoal(){ perform.updateProgress();
+		void updateGoal() { perform.updateProgress();
 		}
 		void printGoal() { perform.printGoal();
+		}
+		void deleteGoal() { perform.deleteGoal();
 		}
 };
 

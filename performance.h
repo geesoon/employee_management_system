@@ -5,7 +5,6 @@ using namespace std;
 
 class Performance{
 	private:
-		Goal goal[size];
 		List goallist;
 		int goal_cnt;
 	public:
@@ -20,45 +19,44 @@ class Performance{
 
 void Performance::createGoal()
 {
-	string str;
+	string str;	
 	cout<<"Please enter the goal description.\n";
+	
 	getline(cin,str);
-	
 	goallist.createNode(str);
-	
+	cin.ignore();
 	goal_cnt++;	
 }
 
 void Performance::printGoal()
 {	
+	if(goal_cnt== 0)
+	{
+		cout<<"There is no goal in entry\n"; return;
+	}
 	goallist.display(goal_cnt);
 }
 
 void Performance::updateProgress()
 {
-	int index,newscore;	
-		
-	cout<<"Enter goal index >> "; cin>>index;
-			
-	if(index > goal_cnt || index < 0)
+	int update_index;
+	float newscore;
+	cout<<"Enter index number of the goal you wish to change >> ";cin>>update_index;
+	if(update_index < 0 || update_index >= goal_cnt)
 	{
-		cout<<"Error, index out of bound\n";
+		cout<<"Index out of bound.\n";
 		return;
 	}
 	
-	
-	
 	cout<<"Enter new progress score >> "; cin>>newscore;
-	
-	if(newscore < 0 || newscore > 100)
-	{
-		cout<<"Error, input out of bound\n";
-		return ;
-	}
-	
-	goal[index].progress=newscore;
-	cout<<"New score update sucessful.\n";
+	goallist.updateScore(update_index,newscore);
+	cout<<"Progress score sucessfully updated.\n";
 }
 
+void Performance::deleteGoal()
+{
+	goallist.deletegoal(0,goal_cnt);
+	goal_cnt--;
+}
 
 #endif
