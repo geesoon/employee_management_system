@@ -66,21 +66,77 @@ class stack
 		}
 };
 
+char menu()
+{
+	int choice;
+	cout << "EMPLOYEE MANAGEMENT SYSTEM" << endl
+		 << "1. Search employee" << endl
+		 << "2. Employee payroll" << endl
+		 << "3. Evaluate performance" << endl
+		 << "Enter the index of the operation : ";
+	cin  >> choice;
+	return choice;
+}
+
+employee search_engine(string val){
+
+}
+
+void search()
+{
+	char search_type;
+	cout << "Search by:" << endl		
+		<< "1.Name" << endl
+		<< "2.Age" << endl
+		<< "3.Job" << endl
+		<< "4.Enrollment Date (eg: 12/12/2012" << endl
+		<< "5.Salary (eg: 4000)" << endl;
+	cin >> search_type;
+
+	employee search_result;
+	switch(search_type)
+	{
+		case '1': 	string search_name;
+					cout << "Enter the name to be search: ";
+				  	getline(cin,search_name);
+					search_result = search_engine(search_name);
+					break;
+		case '2':	string search_age;
+					cout << "Enter the age to be search: ";
+					cin >> search_age;
+					search_result = search_engine(search_age);
+					break;
+		case '3':	string search_job;
+					cout << "Enter the job to be search: ";
+					getline(cin, search_job);	
+					search_result = search_engine(search_job);
+					break;
+		case '4':	string search_date;
+					cout << "Enter the enrollment date to be search: ";
+					cin >> search_date;
+					search_result = search_engine(search_date);
+					break;
+		case '5':	string search_salary;
+					cout << "Enter the salary amount to be search: ";
+					cin >> search_salary;
+					search_result = search_engine(search_salary);
+	}
+	cout << search_result.getinfo;
+}
 
 int main()
 {
+	//Channel text info into stack//
     fstream infile("employee.txt",ios::in);
     employee emp[10];
     stack emply;
     emply.createStack();
-
     details *temp;
     if (!infile)
     { 
         cout << "ERROR! Cannot open file\n";
         exit(1); 
     }
-    
     int i =0;
     while(!infile.eof())
     {
@@ -95,21 +151,30 @@ int main()
         delete temp;
         i++;
     }
-	
-
     for(int i=0; i<10; i++)
     {
-        emp[i].getinfo();
+        emply.push(emp[i]);
+		//emp[i].getinfo();
     }
     
-    emp[0].createGoal();
+	//Performance//
+    /*
+	emp[0].createGoal();
     emp[0].printGoal();
 	emp[0].createGoal();
     emp[0].printGoal();
 	emp[0].updateGoal();
 	emp[0].printGoal();
+	*/
    
-    
+    //main menu//
+	char choice = menu();
+	switch(choice)
+	{
+		case '1': 	search();	break;
+		case '2':	break;
+		case '3':	break;
+	}
     infile.close();
     return 0;
 }
