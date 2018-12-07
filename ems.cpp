@@ -106,8 +106,8 @@ int main()
     emp[0].printGoal();
 	emp[0].createGoal();
     emp[0].printGoal();
-    emp[0].createGoal();
-    emp[0].printGoal();
+	emp[0].updateGoal();
+	emp[0].printGoal();
    
     
     infile.close();

@@ -24,7 +24,6 @@ void Performance::createGoal()
 	
 	getline(cin,str);
 	goallist.createNode(str);
-	cin.ignore();
 	goal_cnt++;	
 }
 
