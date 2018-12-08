@@ -26,6 +26,8 @@ class List{
 		void display(int goal_cnt);
 		void updateScore(int,float);
 		void deletegoal(int,int);
+		char getgrade(float);
+
 };
 
 void List::createNode(string desc="",float prog=0)
@@ -70,8 +72,10 @@ void List:: display(int goal_cnt)
 			  	  
 		temp=temp->next;
 	}
-		    
-		cout<<"Overall progess score = "<< (tot/goal_cnt)<<endl;
+		tot=tot/goal_cnt;    
+		cout<<"Overall progess score = "<< tot<<endl;
+		cout<<"Your performance grade => "<<getgrade(tot)<<endl;
+		
 		delete temp;
 }
 
@@ -123,6 +127,20 @@ void List::deletegoal(int index,int cnt)
 		prev->next=curr->next;
 		delete curr;
 	}
+}
+
+char List::getgrade(float score)
+{
+	if(score>=80)
+		return 'A';
+	else if (score>=60)
+		return 'B';
+	else if (score>=40)
+		return 'C';
+	else if (score>=20)
+		return 'D';
+	else 
+		return 'F';
 }
 
 #endif

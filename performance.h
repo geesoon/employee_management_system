@@ -56,6 +56,7 @@ void Performance::deleteGoal()
 {
 	goallist.deletegoal(0,goal_cnt);
 	goal_cnt--;
+	cout<<"Goal delete successfully.\n";
 }
 
 #endif
