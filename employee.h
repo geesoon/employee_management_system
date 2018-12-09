@@ -46,6 +46,8 @@ class employee{
 		}
 		void deleteGoal() { perform.deleteGoal();
 		}
+		void outputGoal() { perform.outputgoal();
+		}
 };
 
 

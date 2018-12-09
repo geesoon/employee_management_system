@@ -10,6 +10,7 @@ const int size = 100;
 
 using namespace std;
 
+
 class stack
 {
 	private:
@@ -93,7 +94,7 @@ void search()
 		<< "5.Salary (eg: 4000)" << endl;
 	cin >> search_type;
 
-	employee search_result;
+	/*employee search_result;
 	switch(search_type)
 	{
 		case '1': 	string search_name;
@@ -121,7 +122,20 @@ void search()
 					cin >> search_salary;
 					search_result = search_engine(search_salary);
 	}
-	cout << search_result.getinfo;
+	cout << search_result.getinfo;*/
+}
+
+void writegoalfile(employee emp[],int empcnt)
+{
+	fstream out;												//***
+	out.open("employeegoal.txt",ios::out| ios::trunc);			// Clear existing data		
+	out.close();												//***
+	
+	for(int i=0;i<2;i++)  //todo: replace counter breakpoint with empcnt
+	{
+		emp[i].outputGoal();
+	}
+	
 }
 
 int main()
@@ -129,6 +143,7 @@ int main()
 	//Channel text info into stack//
     fstream infile("employee.txt",ios::in);
     employee emp[10];
+    int empcnt = 0 ;
     stack emply;
     emply.createStack();
     details *temp;
@@ -148,6 +163,8 @@ int main()
         getline(infile, temp->salary,'\t');
         getline(infile, temp->cv,'\t');
     	emp[i].setinfo(temp);
+    	
+    	empcnt++;	//number of existing employee record
         delete temp;
         i++;
     }
@@ -157,15 +174,17 @@ int main()
 		//emp[i].getinfo();
     }
     
-	//Performance//
-    /*
+	/*/Performance//
+    
 	emp[0].createGoal();
     emp[0].printGoal();
 	emp[0].createGoal();
     emp[0].printGoal();
 	emp[0].updateGoal();
 	emp[0].printGoal();
-	*/
+	
+	
+	writegoalfile(emp,empcnt);*/
    
     //main menu//
 	char choice = menu();

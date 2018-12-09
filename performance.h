@@ -7,6 +7,7 @@ class Performance{
 	private:
 		List goallist;
 		int goal_cnt;
+		friend class employee;
 	public:
 		Performance() {goal_cnt = 0;}
 		
@@ -14,6 +15,7 @@ class Performance{
 		void deleteGoal(); //not done
 		void printGoal();
 		void updateProgress();
+		void outputgoal();
 	
 };
 
@@ -57,6 +59,25 @@ void Performance::deleteGoal()
 	goallist.deletegoal(0,goal_cnt);
 	goal_cnt--;
 	cout<<"Goal delete successfully.\n";
+}
+
+void Performance::outputgoal()
+{
+	fstream out;
+	out.open("employeegoal.txt",ios::app);
+	Goal * temp = goallist.head;
+
+
+	out<<goal_cnt<<endl;		//record number of goal for each employee
+	
+	for(int i = 0;i<goal_cnt;i++)
+	{
+		out<<temp->goal_desc<<"\t"
+		   <<temp->progress<<"\t";
+		temp= temp->next;   
+	}
+	
+	out.close();
 }
 
 #endif

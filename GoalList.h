@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 struct Goal{
 	
 	string goal_desc;
@@ -10,11 +11,12 @@ struct Goal{
 	Goal * next;
 };
 
+
 class List{
 	private:
 		Goal * head;
 		Goal * tail;
-	
+		friend class Performance;
 	public:
 		List()
 		{
