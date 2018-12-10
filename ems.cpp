@@ -94,34 +94,38 @@ void search()
 	cin >> search_type;
 
 	employee search_result;
+	string search_name;
+	string search_age;
+	string search_job;
+	string search_date;
+	string search_salary;
 	switch(search_type)
 	{
-		case '1': 	string search_name;
+		case '1': 	
 					cout << "Enter the name to be search: ";
 				  	getline(cin,search_name);
 					search_result = search_engine(search_name);
 					break;
-		case '2':	string search_age;
+		case '2':	
 					cout << "Enter the age to be search: ";
 					cin >> search_age;
 					search_result = search_engine(search_age);
 					break;
-		case '3':	string search_job;
+		case '3':	
 					cout << "Enter the job to be search: ";
 					getline(cin, search_job);	
 					search_result = search_engine(search_job);
 					break;
-		case '4':	string search_date;
+		case '4':	
 					cout << "Enter the enrollment date to be search: ";
 					cin >> search_date;
 					search_result = search_engine(search_date);
 					break;
-		case '5':	string search_salary;
+		case '5':	
 					cout << "Enter the salary amount to be search: ";
 					cin >> search_salary;
 					search_result = search_engine(search_salary);
 	}
-	cout << search_result.getinfo;
 }
 
 int main()
