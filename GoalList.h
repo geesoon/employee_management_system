@@ -39,7 +39,7 @@ void List::createNode(string desc="",float prog=0)
 	Goal * prevnode = NULL;
 	Goal * newnode = new Goal;
 	newnode->goal_desc = desc;
-	newnode->progress = 0 ;
+	newnode->progress = prog ;
 			
 	while(currnode)
 	{

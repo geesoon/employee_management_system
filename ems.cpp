@@ -138,6 +138,35 @@ void writegoalfile(employee emp[],int empcnt)
 	
 }
 
+void readgoalfile(employee emp[],int empcnt)
+{
+	int goalcnt;
+	float prog;     //store extracted data temperory
+	string desc;
+	
+	fstream in;
+	in.open("employeegoal.txt",ios::in);
+	
+	if (!in)
+    { 
+        cout << "ERROR! Cannot open file\n";
+        exit(1); 
+    }
+    
+    for(int i=0;i<empcnt;i++)
+    {
+    	in>>goalcnt;
+    	
+		for(int j=0;j<goalcnt;j++)
+    	{
+    		getline(in,desc,'\t');
+    		in>>prog;
+			emp[i].insertgoal(desc,prog);
+		}
+		
+	}
+}
+
 int main()
 {
 	//Channel text info into stack//
@@ -174,17 +203,16 @@ int main()
 		//emp[i].getinfo();
     }
     
-	/*/Performance//
-    
-	emp[0].createGoal();
+	//Performance//
+	/*emp[0].createGoal();
     emp[0].printGoal();
 	emp[0].createGoal();
     emp[0].printGoal();
 	emp[0].updateGoal();
-	emp[0].printGoal();
+	emp[0].printGoal();*/
 	
 	
-	writegoalfile(emp,empcnt);*/
+	//writegoalfile(emp,empcnt);
    
     //main menu//
 	char choice = menu();

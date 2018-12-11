@@ -1,1 +1,4 @@
-2jones	100	yap	0	1geesoon	0	
+2
+sponsor	100	database	0	
+0
+

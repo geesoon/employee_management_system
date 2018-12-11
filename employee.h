@@ -48,6 +48,9 @@ class employee{
 		}
 		void outputGoal() { perform.outputgoal();
 		}
+		void insertgoal(string desc,float prog) { perform.goallist.createNode(desc,prog);
+			
+		}
 };
 
 

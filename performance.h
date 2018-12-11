@@ -76,7 +76,7 @@ void Performance::outputgoal()
 		   <<temp->progress<<"\t";
 		temp= temp->next;   
 	}
-	
+	out<<endl;
 	out.close();
 }
 
