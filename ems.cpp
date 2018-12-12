@@ -156,15 +156,19 @@ void readgoalfile(employee emp[],int empcnt)
     for(int i=0;i<empcnt;i++)
     {
     	in>>goalcnt;
+    	//cout<<"Goal count = "<<goalcnt;
     	
 		for(int j=0;j<goalcnt;j++)
     	{
     		getline(in,desc,'\t');
     		in>>prog;
 			emp[i].insertgoal(desc,prog);
-		}
-		
+			cout<<"goal = "<<desc<<endl;
+			cout<<"Progress = "<<prog<<endl;
+			in.ignore();
+		}	
 	}
+	in.close();
 }
 
 int main()
@@ -212,7 +216,8 @@ int main()
 	emp[0].printGoal();*/
 	
 	
-	//writegoalfile(emp,empcnt);
+	readgoalfile(emp,empcnt);
+	emp[0].printGoal();
    
     //main menu//
 	char choice = menu();

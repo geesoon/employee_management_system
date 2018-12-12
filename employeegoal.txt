@@ -1,4 +1,4 @@
 2
-sponsor	100	database	0	
-0
-
+sponsor	100	database	20
+2
+sponsor2	50	database2	23

@@ -12,12 +12,15 @@ class Performance{
 		Performance() {goal_cnt = 0;}
 		
 		void createGoal();
+		void insertGoal(string,float);
 		void deleteGoal(); //not done
 		void printGoal();
 		void updateProgress();
 		void outputgoal();
 	
 };
+
+
 
 void Performance::createGoal()
 {
@@ -27,6 +30,12 @@ void Performance::createGoal()
 	getline(cin,str);
 	goallist.createNode(str);
 	goal_cnt++;	
+}
+
+void Performance::insertGoal(string desc,float prog)
+{
+	goallist.createNode(desc,prog);
+	goal_cnt++;
 }
 
 void Performance::printGoal()
