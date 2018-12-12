@@ -79,8 +79,13 @@ char menu()
 	return choice;
 }
 
-employee search_engine(string val){
-
+employee search_engine(string val, employee emp){
+	int index = 0;
+	bool compare_result = false;
+	while(compare_result == false && index < size-1)
+	{
+		if(val == (emp.stackTop()).)
+	}
 }
 
 void search()
@@ -94,13 +99,13 @@ void search()
 		<< "5.Salary (eg: 4000)" << endl;
 	cin >> search_type;
 
-	/*employee search_result;
+	employee search_result;
 	switch(search_type)
 	{
 		case '1': 	string search_name;
 					cout << "Enter the name to be search: ";
 				  	getline(cin,search_name);
-					search_result = search_engine(search_name);
+					return search_name;
 					break;
 		case '2':	string search_age;
 					cout << "Enter the age to be search: ";
@@ -122,7 +127,7 @@ void search()
 					cin >> search_salary;
 					search_result = search_engine(search_salary);
 	}
-	cout << search_result.getinfo;*/
+	cout << search_result.getinfo;
 }
 
 void writegoalfile(employee emp[],int empcnt)
