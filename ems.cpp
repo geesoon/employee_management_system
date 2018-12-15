@@ -73,13 +73,14 @@ char menu()
 		 << "1. Search employee" << endl
 		 << "2. Employee payroll" << endl
 		 << "3. Evaluate performance" << endl
+		 << "4. Terminate employee" << endl //terminate the most recent appointed employee (LIFO)
 		 << "Enter the index of the operation : ";
 	cin  >> choice;
 	return choice;
 }
 
 employee search_engine(string val){
-
+	
 }
 
 void search()
