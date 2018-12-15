@@ -76,7 +76,7 @@ void List:: display(int goal_cnt)
 	}
 		tot=tot/goal_cnt;    
 		cout<<"Overall progess score = "<< tot<<endl;
-		cout<<"Your performance grade => "<<getgrade(tot)<<endl;
+		cout<<"Performance grade => "<<getgrade(tot)<<endl;
 		
 		delete temp;
 }

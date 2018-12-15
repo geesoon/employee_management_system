@@ -77,7 +77,7 @@ void Performance::outputgoal()
 	Goal * temp = goallist.head;
 
 
-	out<<goal_cnt<<endl;		//record number of goal for each employee
+	out<<goal_cnt;		//record number of goal for each employee
 	
 	for(int i = 0;i<goal_cnt;i++)
 	{

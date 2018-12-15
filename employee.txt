@@ -1,3 +1,3 @@
-Hiew Gee Soon	27	software engineer	01/01/2015	4000.00	Bachelor of Computer Science in University Technology Malaysia
-Jones Yap Zhong	25	senior software engineer	30/04/2010	6000.00	Bachelor of Computer Science in University Malayan
+Hiew Gee Soon	27	software engineer	01/01/2015	4000.00	Bachelor of Computer Science in University Technology Malaysia	
+Jones Yap Zhong	25	senior software engineer	30/04/2010	6000.00	Bachelor of Computer Science in University Malayan	
 Oh Wan Qi	24	network engineer	25/07/2009	5000.00	Bachelor of Computer & Communication Engineering in National University Malaysia

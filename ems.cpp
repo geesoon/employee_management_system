@@ -69,7 +69,7 @@ class stack
 
 char menu()
 {
-	int choice;
+	char choice;
 	cout << "EMPLOYEE MANAGEMENT SYSTEM" << endl
 		 << "1. Search employee" << endl
 		 << "2. Employee payroll" << endl
@@ -79,18 +79,75 @@ char menu()
 	return choice;
 }
 
-employee search_engine(string val, employee emp){
+employee search_engine( string val, int type, int empcnt, employee emp [] )
+{
 	int index = 0;
-	bool compare_result = false;
-	while(compare_result == false && index < size-1)
+	
+	switch(type)
 	{
-		if(val == (emp.stackTop()).)
-	}
+		case 0 : 
+		while(index < empcnt)
+		{
+			if(emp[index].getName() == val)
+				return emp[index];
+			else 
+				index++;		
+		}
+		break;
+	
+		case 1 : 
+		while(index < empcnt)
+		{
+			if(emp[index].getAge() == val)
+				return emp[index];
+			else 
+				index++;		
+		}
+		break;
+	
+		case 2 : 
+		while(index < empcnt)
+		{
+			if(emp[index].getJob() == val)
+				return emp[index];
+			else 
+				index++;		
+		}
+		break;
+	
+		case 3 : 
+		while(index < empcnt)
+		{
+			if(emp[index].getEnrolldate() == val)
+				return emp[index];
+			else 
+				index++;		
+		}
+		break;
+	
+		case 4 : 
+		while(index < empcnt)
+		{
+			if(emp[index].getSalary() == val)
+				return emp[index];
+			else 
+				index++;		
+		}
+		break;
+		
+		}// end of switch
+	
+		cout<<"Sorry no result found. Returning first entry.\n\n";
+		return emp[0];
 }
 
-void search()
+
+void search(int empcnt,employee emp[])
 {
 	char search_type;
+	employee search_result;
+	string query;
+	
 	cout << "Search by:" << endl		
 		<< "1.Name" << endl
 		<< "2.Age" << endl
@@ -99,35 +156,38 @@ void search()
 		<< "5.Salary (eg: 4000)" << endl;
 	cin >> search_type;
 
-	employee search_result;
+	cin.ignore();
 	switch(search_type)
 	{
-		case '1': 	string search_name;
+		case '1': 
 					cout << "Enter the name to be search: ";
-				  	getline(cin,search_name);
-					return search_name;
+				  	getline(cin,query);
+					search_result=search_engine(query,0,empcnt,emp);
 					break;
-		case '2':	string search_age;
+		case '2':
 					cout << "Enter the age to be search: ";
-					cin >> search_age;
-					search_result = search_engine(search_age);
+					cin >>query;
+					search_result = search_engine(query,1,empcnt,emp);
 					break;
-		case '3':	string search_job;
+		case '3':
 					cout << "Enter the job to be search: ";
-					getline(cin, search_job);	
-					search_result = search_engine(search_job);
+					getline(cin,query);	
+					search_result = search_engine(query,2,empcnt,emp);
 					break;
-		case '4':	string search_date;
+		case '4':
 					cout << "Enter the enrollment date to be search: ";
-					cin >> search_date;
-					search_result = search_engine(search_date);
+					cin >>query;
+					search_result = search_engine(query,3,empcnt,emp);
 					break;
-		case '5':	string search_salary;
+		case '5':
 					cout << "Enter the salary amount to be search: ";
-					cin >> search_salary;
-					search_result = search_engine(search_salary);
+					cin >> query;
+					search_result = search_engine(query,4,empcnt,emp);
+					break;
+
 	}
-	cout << search_result.getinfo;
+	
+	search_result.getinfo();
 }
 
 void writegoalfile(employee emp[],int empcnt)
@@ -136,7 +196,7 @@ void writegoalfile(employee emp[],int empcnt)
 	out.open("employeegoal.txt",ios::out| ios::trunc);			// Clear existing data		
 	out.close();												//***
 	
-	for(int i=0;i<2;i++)  //todo: replace counter breakpoint with empcnt
+	for(int i=0;i<empcnt;i++)  //todo: replace counter breakpoint with empcnt
 	{
 		emp[i].outputGoal();
 	}
@@ -168,12 +228,49 @@ void readgoalfile(employee emp[],int empcnt)
     		getline(in,desc,'\t');
     		in>>prog;
 			emp[i].insertgoal(desc,prog);
-			cout<<"goal = "<<desc<<endl;
-			cout<<"Progress = "<<prog<<endl;
+			//cout<<"goal = "<<desc<<endl;
+			//cout<<"Progress = "<<prog<<endl;
 			in.ignore();
 		}	
 	}
 	in.close();
+}
+
+void empPerformance(int empcnt, employee emp[])
+{
+	int index;
+	char choice;
+	
+	cout<<"Select Option:\n"
+		<<"[1] View goal and performace\n"
+		<<"[2] Create new goal\n"
+		<<"[3] Update progress\n"
+		<<"[4] Delete Goal\n"
+		<<"Choice  >>  ";cin>>choice;
+		
+	cout<<"Select employee >> ";cin>>index;
+	if (index<0||index>=empcnt)
+	{
+		cout<<"index out of bound\n";
+		return;
+	}
+	cin.ignore();
+	switch(choice)
+	{
+		case '1':
+				emp[index].printGoal();
+				break;
+		case '2': 
+				emp[index].createGoal();
+				break;
+		case '3': 
+				emp[index].updateGoal();
+				break;
+		case '4': 
+				emp[index].deleteGoal();
+				break;
+	}//end switch
+	
 }
 
 int main()
@@ -182,15 +279,18 @@ int main()
     fstream infile("employee.txt",ios::in);
     employee emp[10];
     int empcnt = 0 ;
+    int i =0;
     stack emply;
     emply.createStack();
-    details *temp;
-    if (!infile)
+    details * temp;
+    
+	if (!infile)
     { 
         cout << "ERROR! Cannot open file\n";
         exit(1); 
     }
-    int i =0;
+    
+
     while(!infile.eof())
     {
         temp = new details;
@@ -199,39 +299,35 @@ int main()
         getline(infile, temp->job,'\t');
         getline(infile, temp->enrollDate,'\t');
         getline(infile, temp->salary,'\t');
-        getline(infile, temp->cv,'\t');
+        getline(infile, temp->cv,'\n');
     	emp[i].setinfo(temp);
     	
     	empcnt++;	//number of existing employee record
         delete temp;
         i++;
     }
-    for(int i=0; i<10; i++)
+    
+	for(int i=0; i<10; i++)
     {
         emply.push(emp[i]);
-		//emp[i].getinfo();
     }
     
-	//Performance//
-	/*emp[0].createGoal();
-    emp[0].printGoal();
-	emp[0].createGoal();
-    emp[0].printGoal();
-	emp[0].updateGoal();
-	emp[0].printGoal();*/
-	
-	
 	readgoalfile(emp,empcnt);
-	emp[0].printGoal();
-   
+	
+
     //main menu//
 	char choice = menu();
+
 	switch(choice)
 	{
-		case '1': 	search();	break;
+		case '1': 	search(empcnt,emp);break;
 		case '2':	break;
-		case '3':	break;
+		case '3':	empPerformance(empcnt,emp);break;
+		default : cout<<"unknown";
 	}
-    infile.close();
+    
+	writegoalfile(emp,empcnt);
+	
+	infile.close();
     return 0;
 }

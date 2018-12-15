@@ -19,6 +19,14 @@ class employee{
         Performance perform;
         details info;
     public:
+    	string getName(){ return info.name; }
+    	string getAge(){ return info.age; }
+    	string getJob(){ return info.job; }
+    	string getEnrolldate(){ return info.enrollDate; }
+    	string getSalary(){ return info.salary; }
+    	string getCv(){ return info.cv; }
+		
+		
 		void setinfo(details *file_info)
         {
             info.name = file_info->name;
@@ -30,19 +38,22 @@ class employee{
         }
         void getinfo()
         {
-            cout 	<< info.name << "\t" 
-					<< info.age << "\t" 
-					<< info.job << "\t" 
-					<< info.enrollDate << "\t" 
-					<< info.salary << "\t" 
-					<< info.cv << endl;
+            cout 	<< info.name << "\n" 
+					<< info.age << "\n" 
+					<< info.job << "\n" 
+					<< info.enrollDate << "\n" 
+					<< info.salary << "\n" 
+					<< info.cv << endl<<endl;
         }
         
         void createGoal() { perform.createGoal();
 		}
 		void updateGoal() { perform.updateProgress();
 		}
-		void printGoal() { perform.printGoal();
+		void printGoal() 
+		{ 
+			cout<<info.name<<endl;
+			perform.printGoal();
 		}
 		void deleteGoal() { perform.deleteGoal();
 		}
