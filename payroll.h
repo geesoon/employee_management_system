@@ -31,7 +31,7 @@ class payroll
 		{
 			float bonus,OT;
 			OT = (wh - 40) * 10;
-			bonus = basic/10;
+			bonus = basic * 0.05;
 			allowance = OT + bonus;
 		}
 		
@@ -42,6 +42,7 @@ class payroll
 		}
 		
 		int getWD(){return wh;};
+		float getAllowance(){return allowance;};
 };
 
 #endif

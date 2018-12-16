@@ -65,6 +65,9 @@ void List:: display(int goal_cnt)
 	Goal *temp = new Goal;
 	temp=head;
     float tot=0;
+    
+    cout<<setw(8)<<right<<"Goal"<<setw(18)<<"Progress"<<endl
+    	<<"==============================================================\n";
 	while(temp!=NULL)
 	{
 		cout<<temp->goal_desc<<"\t  "
@@ -75,7 +78,7 @@ void List:: display(int goal_cnt)
 		temp=temp->next;
 	}
 		tot=tot/goal_cnt;    
-		cout<<"Overall progess score = "<< tot<<endl;
+		cout<<"\nOverall progess score = "<< tot<<endl;
 		cout<<"Performance grade => "<<getgrade(tot)<<endl;
 		
 		delete temp;

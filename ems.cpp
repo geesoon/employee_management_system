@@ -2,6 +2,7 @@
 #include<string>
 #include<fstream>
 #include <cstdlib>
+#include <iomanip>
 const int size = 100;
 
 #include "GoalList.h"
@@ -39,7 +40,8 @@ class stack
 		{
 			if(isEmpty())
 			{
-				//cout << "Cannot pop item. Stack is empty!"<< endl;
+				cout << "Error. Stack is empty!"<< endl;
+				return data[top];
 			}
 			else
 			{
@@ -71,10 +73,15 @@ class stack
 char menu()
 {
 	char choice;
-	cout << "EMPLOYEE MANAGEMENT SYSTEM" << endl
+	cout <<"============================="<<endl
+		 << "EMPLOYEE MANAGEMENT SYSTEM" << endl
+		 <<"============================="<<endl
 		 << "1. Search employee" << endl
 		 << "2. Employee payroll" << endl
 		 << "3. Evaluate performance" << endl
+		 << "4. Dismiss recent employee" <<endl
+		 << "Q. Exit program"<<endl
+		 <<"============================="<<endl
 		 << "Enter the index of the operation : ";
 	cin  >> choice;
 	return choice;
@@ -149,7 +156,7 @@ void search(int empcnt,employee emp[])
 	employee search_result;
 	string query;
 	
-	cout << "Search by:" << endl		
+	cout << "\nSearch by:" << endl		
 		<< "1.Name" << endl
 		<< "2.Age" << endl
 		<< "3.Job" << endl
@@ -294,7 +301,8 @@ void empPayroll(int empcnt,employee emp[])
 		return;
 	}
 	
-	cout<<"The total pay for this month is  RM "<<emp[index].getNetPay()<<endl<<endl;
+
+	emp[index].getNetPay();
 	
 	
 }
@@ -306,6 +314,7 @@ int main()
     employee emp[10];
     int empcnt = 0 ;
     int i =0;
+    char choice;
     stack emply;
     emply.createStack();
     details * temp;
@@ -345,17 +354,24 @@ int main()
 	
 
     //main menu//
-	char choice = menu();
-
+	while(choice!='q' && choice!='Q')
+	{
+	choice = menu();
 	switch(choice)
 	{
 		case '1': 	search(empcnt,emp);break;
 		case '2':	empPayroll(empcnt,emp);break;
 		case '3':	empPerformance(empcnt,emp);break;
+		case '4':   emply.pop();
+					empcnt--;
+					break;
+		case 'q':
+		case 'Q':   break;
 		default : cout<<"Invalid choice\n";
 	}
-    
-
+    	system("pause");
+    	system("CLS");
+	}
 	
 	
 	writegoalfile(emp,empcnt);

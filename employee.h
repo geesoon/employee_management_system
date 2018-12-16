@@ -67,7 +67,11 @@ class employee{
 			proll.setBasic(info.salary);
 		}
 		
-		float getNetPay()
+		string getBaseSalary(){return info.salary;
+		}
+		
+		
+		void getNetPay()
 		{
 
 			proll.setWD();
@@ -75,7 +79,9 @@ class employee{
 			if(proll.getWD() > 40)
 				proll.setAllowance();
 				
-			return proll.calcGrossPay();
+			cout<<"Base salary >> "<<info.salary<<endl
+				<<"Allowance >> "<<proll.getAllowance()<<endl;
+			cout<<"The total pay roll for this month >> RM"<<proll.calcGrossPay()<<endl;
 		}
 };
 
