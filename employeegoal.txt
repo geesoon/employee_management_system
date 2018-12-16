@@ -1,4 +1,4 @@
-2UTM Sponsor	0	do assignment	100	
+2UTM Sponsor	60	do assignment	100	
 2
 database2	23	database2	23	
-2database2	23	aiesec	23	
+3database2	23	aiesec	23	2	0	

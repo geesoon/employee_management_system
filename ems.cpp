@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<fstream>
+#include <cstdlib>
 const int size = 100;
 
 #include "GoalList.h"
@@ -152,7 +153,7 @@ void search(int empcnt,employee emp[])
 		<< "1.Name" << endl
 		<< "2.Age" << endl
 		<< "3.Job" << endl
-		<< "4.Enrollment Date (eg: 12/12/2012" << endl
+		<< "4.Enrollment Date (eg: 12/12/2012)" << endl
 		<< "5.Salary (eg: 4000)" << endl;
 	cin >> search_type;
 
@@ -221,15 +222,12 @@ void readgoalfile(employee emp[],int empcnt)
     for(int i=0;i<empcnt;i++)
     {
     	in>>goalcnt;
-    	//cout<<"Goal count = "<<goalcnt;
     	
 		for(int j=0;j<goalcnt;j++)
     	{
     		getline(in,desc,'\t');
     		in>>prog;
 			emp[i].insertgoal(desc,prog);
-			//cout<<"goal = "<<desc<<endl;
-			//cout<<"Progress = "<<prog<<endl;
 			in.ignore();
 		}	
 	}
@@ -248,7 +246,14 @@ void empPerformance(int empcnt, employee emp[])
 		<<"[4] Delete Goal\n"
 		<<"Choice  >>  ";cin>>choice;
 		
-	cout<<"Select employee >> ";cin>>index;
+	cout<<"Select employee :\n";
+	for(int i=0;i<empcnt;i++)
+	{
+		cout<<"[ "<<i<<" ] "<< emp[i].getName()<<endl;
+	}
+	
+	cin>>index;
+	
 	if (index<0||index>=empcnt)
 	{
 		cout<<"index out of bound\n";
@@ -270,6 +275,27 @@ void empPerformance(int empcnt, employee emp[])
 				emp[index].deleteGoal();
 				break;
 	}//end switch
+	
+}
+
+void empPayroll(int empcnt,employee emp[])
+{
+	int index;
+	float totalpay=0;
+	cout<<"Select employee :\n";
+	for(int i=0;i<empcnt;i++)
+	{
+		cout<<"[ "<<i<<" ] "<< emp[i].getName()<<endl;
+	}
+	cin>>index;
+	if (index<0||index>=empcnt)
+	{
+		cout<<"index out of bound\n";
+		return;
+	}
+	
+	cout<<"The total pay for this month is  RM "<<emp[index].getNetPay()<<endl<<endl;
+	
 	
 }
 
@@ -303,15 +329,18 @@ int main()
     	emp[i].setinfo(temp);
     	
     	empcnt++;	//number of existing employee record
-        delete temp;
+        
+		delete temp;
         i++;
     }
     
-	for(int i=0; i<10; i++)
+	for(int i=0; i<empcnt; i++)
     {
         emply.push(emp[i]);
+        emp[i].setSalary();
     }
     
+
 	readgoalfile(emp,empcnt);
 	
 
@@ -321,13 +350,15 @@ int main()
 	switch(choice)
 	{
 		case '1': 	search(empcnt,emp);break;
-		case '2':	break;
+		case '2':	empPayroll(empcnt,emp);break;
 		case '3':	empPerformance(empcnt,emp);break;
-		default : cout<<"unknown";
+		default : cout<<"Invalid choice\n";
 	}
     
-	writegoalfile(emp,empcnt);
+
 	
+	
+	writegoalfile(emp,empcnt);
 	infile.close();
     return 0;
 }

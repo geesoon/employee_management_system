@@ -61,6 +61,22 @@ class employee{
 		}
 		void insertgoal(string desc,float prog) {perform.insertGoal(desc,prog);			
 		}
+		
+		void setSalary()
+		{
+			proll.setBasic(info.salary);
+		}
+		
+		float getNetPay()
+		{
+
+			proll.setWD();
+			
+			if(proll.getWD() > 40)
+				proll.setAllowance();
+				
+			return proll.calcGrossPay();
+		}
 };
 
 
