@@ -36,19 +36,19 @@ class stack
 				//cout << data[top] << " has been push to the stack.";
 			}
 		}
-		employee pop()
+		void pop()
 		{
 			if(isEmpty())
 			{
 				cout << "Error. Stack is empty!"<< endl;
-				return data[top];
+				return;
 			}
 			else
 			{
 				//cout << "Popped value : " << data[top] << endl;
 				int temp = top;
 				top = top-1;
-				return data[temp];
+				return;
 			}
 		}
 		employee stackTop()
@@ -251,7 +251,8 @@ void empPerformance(int empcnt, employee emp[])
 		<<"[2] Create new goal\n"
 		<<"[3] Update progress\n"
 		<<"[4] Delete Goal\n"
-		<<"Choice  >>  ";cin>>choice;
+		<<"Choice  >>  ";
+	cin >>choice;
 		
 	cout<<"Select employee :\n";
 	for(int i=0;i<empcnt;i++)
@@ -300,11 +301,7 @@ void empPayroll(int empcnt,employee emp[])
 		cout<<"index out of bound\n";
 		return;
 	}
-	
-
 	emp[index].getNetPay();
-	
-	
 }
 
 int main()
@@ -324,8 +321,6 @@ int main()
         cout << "ERROR! Cannot open file\n";
         exit(1); 
     }
-    
-
     while(!infile.eof())
     {
         temp = new details;
@@ -342,17 +337,13 @@ int main()
 		delete temp;
         i++;
     }
-    
 	for(int i=0; i<empcnt; i++)
     {
         emply.push(emp[i]);
         emp[i].setSalary();
     }
-    
-
 	readgoalfile(emp,empcnt);
 	
-
     //main menu//
 	while(choice!='q' && choice!='Q')
 	{
@@ -372,8 +363,7 @@ int main()
     	system("pause");
     	system("CLS");
 	}
-	
-	
+
 	writegoalfile(emp,empcnt);
 	infile.close();
     return 0;
